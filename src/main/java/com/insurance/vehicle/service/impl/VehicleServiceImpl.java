@@ -24,4 +24,15 @@ public class VehicleServiceImpl implements VehicleService {
 		return vehicle;
 	}
 
+	@Override
+	public Vehicle updateVehicleDetails(Vehicle vehicle) {
+		Vehicle vehicles = vehicleRepository.save(vehicle);
+		return vehicles;
+	}
+
+	@Override
+	public void deleteVehicleDetailsyId(Integer id) {
+		vehicleRepository.deleteById(id);
+	}
+
 }
