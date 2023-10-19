@@ -27,20 +27,20 @@ public class VehicleController {
 	}
 
 	@GetMapping("/vehicle/{id}")
-	public ResponseEntity<Vehicle> getVehicleById(@PathVariable ("id")Integer id) {
+	public ResponseEntity<Vehicle> getVehicleById(@PathVariable("id") Integer id) {
 		Vehicle vehicle = vehicleService.getVehicleById(id);
 		return ResponseEntity.status(HttpStatus.OK).body(vehicle);
 	}
 
 	@PutMapping("/vehicle")
-	public Vehicle updateVehicleDetails(@RequestBody Vehicle vehicle) {
+	public ResponseEntity<Vehicle> updateVehicleDetails(@RequestBody Vehicle vehicle) {
 		Vehicle vehicles = vehicleService.updateVehicleDetails(vehicle);
-		return vehicles;
+		return ResponseEntity.status(HttpStatus.OK).body(vehicles);
 	}
 
 	@DeleteMapping("/vehicle/{id}")
-	public String deleteVehicleDetailsyId(@PathVariable ("id")Integer id) {
+	public ResponseEntity<String> deleteVehicleDetailsyId(@PathVariable("id") Integer id) {
 		vehicleService.deleteVehicleDetailsyId(id);
-		return "Record deleted successfully";
+		return ResponseEntity.status(HttpStatus.OK).body("Record deleted successfully");
 	}
 }
